@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Flame } from 'lucide-react';
+import { Flame, TrendingUp } from 'lucide-react';
 
 const TrendingSection = () => {
   // Sample trending hashtags
@@ -11,21 +11,23 @@ const TrendingSection = () => {
   ];
 
   return (
-    <div className="bg-tube-darkgray p-4 rounded-lg">
-      <div className="flex items-center gap-2 mb-4">
-        <Flame size={18} className="text-tube-pink" />
-        <h3 className="text-white font-semibold">Trending Topics</h3>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {trendingHashtags.map((hashtag, index) => (
-          <a 
-            key={index}
-            href="#"
-            className="bg-tube-gray px-3 py-1 rounded-full text-sm text-gray-300 hover:bg-tube-pink hover:text-white transition-colors"
-          >
-            {hashtag}
-          </a>
-        ))}
+    <div className="w-full py-3 border-b border-tube-gray overflow-x-auto">
+      <div className="flex items-center space-x-3">
+        <div className="flex items-center text-tube-pink">
+          <TrendingUp size={18} className="mr-1" />
+          <span className="font-medium">Hot Tags:</span>
+        </div>
+        <div className="flex items-center space-x-2 overflow-x-auto pb-1">
+          {trendingHashtags.map((hashtag, index) => (
+            <a 
+              key={index}
+              href="#"
+              className="bg-tube-gray px-3 py-1 rounded-full text-xs text-gray-300 hover:bg-tube-pink hover:text-white transition-colors whitespace-nowrap"
+            >
+              {hashtag}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
