@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, Home, Video, Users, Tag, Folder } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -24,14 +25,28 @@ const Header = () => {
           </div>
         </div>
         
-        <div className="flex items-center gap-3">
-          <Button variant="outline" className="border-tube-gray text-white hover:bg-tube-gray hover:text-tube-pink">
-            Log In
-          </Button>
-          <Button className="bg-tube-pink hover:bg-tube-pink-dark text-white">
-            Sign Up
-          </Button>
-        </div>
+        <nav className="flex items-center gap-6">
+          <Link to="/" className="text-tube-pink hover:text-white transition-colors flex items-center gap-1">
+            <Home size={18} />
+            <span className="text-sm font-medium">Home</span>
+          </Link>
+          <Link to="/videos" className="text-gray-400 hover:text-tube-pink transition-colors flex items-center gap-1">
+            <Video size={18} />
+            <span className="text-sm font-medium">Videos</span>
+          </Link>
+          <Link to="/actors" className="text-gray-400 hover:text-tube-pink transition-colors flex items-center gap-1">
+            <Users size={18} />
+            <span className="text-sm font-medium">Actors</span>
+          </Link>
+          <Link to="/categories" className="text-gray-400 hover:text-tube-pink transition-colors flex items-center gap-1">
+            <Folder size={18} />
+            <span className="text-sm font-medium">Categories</span>
+          </Link>
+          <Link to="/tags" className="text-gray-400 hover:text-tube-pink transition-colors flex items-center gap-1">
+            <Tag size={18} />
+            <span className="text-sm font-medium">Tags</span>
+          </Link>
+        </nav>
       </div>
     </header>
   );

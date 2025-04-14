@@ -67,9 +67,9 @@ export default {
 					black: '#0A0A0A',
 					darkgray: '#121212',
 					gray: '#252525',
-					pink: '#FF2D55',
-					'pink-dark': '#D91A45',
-					'pink-light': '#FF5277'
+					pink: '#FF007F', // Updated to the requested color
+					'pink-dark': '#CC0066', // Adjusted darker shade
+					'pink-light': '#FF4DA1' // Adjusted lighter shade
 				}
 			},
 			borderRadius: {

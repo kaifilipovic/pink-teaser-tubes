@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Clock, ExternalLink } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 interface VideoTeaserProps {
   id: number;
@@ -22,9 +22,14 @@ const VideoTeaser = ({
   affiliate 
 }: VideoTeaserProps) => {
   return (
-    <div className="video-card animate-fade-in flex flex-col">
+    <a 
+      href={affiliate}
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="video-card animate-fade-in flex flex-col h-full hover:opacity-95 transition-opacity duration-300"
+    >
       <div className="video-thumbnail aspect-video mb-2 group">
-        <img src={thumbnail} alt={title} />
+        <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
         <div className="video-duration">{duration}</div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div className="w-12 h-12 rounded-full bg-tube-pink flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
@@ -35,7 +40,7 @@ const VideoTeaser = ({
         </div>
       </div>
       <h3 className="font-medium text-white line-clamp-2 mb-1">{title}</h3>
-      <div className="flex items-center gap-2 text-xs text-gray-400 mb-2">
+      <div className="flex items-center gap-2 text-xs text-gray-400 mt-auto">
         <span className="flex items-center gap-1">
           <Clock size={12} />
           {createdAt}
@@ -43,16 +48,7 @@ const VideoTeaser = ({
         <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
         <span>{views} views</span>
       </div>
-      <a 
-        href={affiliate}
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="mt-auto cta-button text-sm group"
-      >
-        Affiliate Link
-        <ExternalLink size={14} className="ml-1 group-hover:translate-x-0.5 transition-transform" />
-      </a>
-    </div>
+    </a>
   );
 };
 
