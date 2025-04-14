@@ -26,10 +26,10 @@ const VideoTeaser = ({
       href={affiliate}
       target="_blank" 
       rel="noopener noreferrer"
-      className="video-card animate-fade-in flex flex-col h-full hover:opacity-95 transition-opacity duration-300"
+      className="group video-card animate-fade-in flex flex-col h-full hover:transform hover:scale-105 transition-all duration-300"
     >
-      <div className="video-thumbnail aspect-video mb-2 group">
-        <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
+      <div className="video-thumbnail aspect-video mb-2">
+        <img src={thumbnail} alt={title} className="w-full h-full object-cover rounded-md" />
         <div className="video-duration">{duration}</div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div className="w-12 h-12 rounded-full bg-tube-pink flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
@@ -39,7 +39,7 @@ const VideoTeaser = ({
           </div>
         </div>
       </div>
-      <h3 className="font-medium text-white line-clamp-2 mb-1">{title}</h3>
+      <h3 className="font-medium text-white line-clamp-2 mb-1 group-hover:text-tube-pink">{title}</h3>
       <div className="flex items-center gap-2 text-xs text-gray-400 mt-auto">
         <span className="flex items-center gap-1">
           <Clock size={12} />
