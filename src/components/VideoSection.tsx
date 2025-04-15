@@ -1,16 +1,21 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 import VideoTeaser from './VideoTeaser';
+
 interface VideoSectionProps {
   title: string;
   type: 'trending' | 'popular' | 'newest';
+  showViewAll?: boolean;
 }
+
 const VideoSection = ({
   title,
-  type
+  type,
+  showViewAll = true
 }: VideoSectionProps) => {
-  // Mock data based on the section type
   const getVideoData = () => {
-    // Reuse the existing video data, but organize differently based on type
     const baseData = [{
       id: 1,
       title: "10 Tech Gadgets You Need In Your Life",
@@ -109,7 +114,6 @@ const VideoSection = ({
       affiliate: "#"
     }];
 
-    // Mix up the videos for each section type to simulate different videos
     if (type === 'trending') {
       return [...baseData].sort((a, b) => parseInt(b.views) - parseInt(a.views)).slice(0, 12);
     } else if (type === 'popular') {
@@ -122,22 +126,49 @@ const VideoSection = ({
       }).slice(0, 12);
     }
   };
+
   const videoData = getVideoData();
-  return <div className="mb-16">
-      <h2 className="text-2xl font-bold mb-6 flex items-center">
-        <span className="text-white">{title}</span>
-        {type === 'trending' && <span className="ml-2 px-2 py-1 bg-tube-pink rounded-full text-xs font-semibold text-white">HOT</span>}
-        {type === 'popular' && <span className="ml-2 px-2 py-1 bg-tube-gray rounded-full text-xs font-semibold text-white">TOP</span>}
-        {type === 'newest' && <span className="ml-2 px-2 py-1 bg-tube-gray rounded-full text-xs font-semibold text-white">NEW</span>}
-      </h2>
+  
+  const hotTags = {
+    1: ['#TechReview', '#Gadgets'],
+    2: ['#Productivity', '#Setup'],
+    3: ['#Marketing', '#Business'],
+    4: ['#Lifestyle', '#Morning'],
+  };
+
+  return (
+    <div className="mb-16 container mx-auto px-4">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          {title}
+          {type === 'trending' && <span className="px-2 py-1 bg-tube-pink rounded-full text-xs font-semibold text-white">HOT</span>}
+          {type === 'popular' && <span className="px-2 py-1 bg-tube-gray rounded-full text-xs font-semibold text-white">TOP</span>}
+          {type === 'newest' && <span className="px-2 py-1 bg-tube-gray rounded-full text-xs font-semibold text-white">NEW</span>}
+        </h2>
+        
+        {showViewAll && (
+          <Link to={`/videos?type=${type}`}>
+            <Button 
+              variant="default" 
+              className="bg-tube-pink hover:bg-tube-pink/80 text-white font-semibold"
+            >
+              View All <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        )}
+      </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        {videoData.map(video => <VideoTeaser key={video.id} {...video} />)}
+        {videoData.map(video => (
+          <VideoTeaser 
+            key={video.id} 
+            {...video} 
+            hotTags={hotTags[video.id as keyof typeof hotTags]} 
+          />
+        ))}
       </div>
-      
-      <div className="flex justify-center mt-8">
-        
-      </div>
-    </div>;
+    </div>
+  );
 };
+
 export default VideoSection;
