@@ -1,12 +1,12 @@
-
 import React from 'react';
 import { Mail, Phone, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Container from '@/components/Container';
 
 const Footer = () => {
   return (
-    <footer className="bg-tube-darkgray border-t border-tube-gray mt-16">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="mt-auto bg-tube-darkgray border-t border-tube-gray">
+      <Container className="py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-white font-bold mb-4">About Us</h3>
@@ -60,7 +60,7 @@ const Footer = () => {
             © {new Date().getFullYear()} TubeAffiliate. All rights reserved.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };
