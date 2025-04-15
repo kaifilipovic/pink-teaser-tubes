@@ -3,13 +3,13 @@ import React from 'react';
 import Header from '@/components/Header';
 import MobileNavbar from '@/components/MobileNavbar';
 import Footer from '@/components/Footer';
-import { Tag as TagIcon, Trending, Eye, Clock } from 'lucide-react';
+import { Tag as TagIcon, TrendingUp, Eye, Clock } from 'lucide-react';
 
 const Tags = () => {
   const tagCategories = [
     {
       title: "Trending Now",
-      icon: <Trending size={20} className="text-tube-pink" />,
+      icon: <TrendingUp size={20} className="text-tube-pink" />,
       tags: [
         { name: "TechReviews", count: 156, size: "text-2xl font-bold" },
         { name: "AffiliateMarketing", count: 142, size: "text-xl font-semibold" },
