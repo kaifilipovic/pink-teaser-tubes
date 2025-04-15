@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import VideoSection from '@/components/VideoSection';
@@ -8,6 +9,7 @@ import Container from '@/components/Container';
 import { Filter, SortAsc, SortDesc, Search, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { cn } from '@/lib/utils';
 
 const Videos = () => {
   const [sortOrder, setSortOrder] = useState<'newest' | 'popular'>('newest');
