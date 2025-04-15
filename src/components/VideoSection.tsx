@@ -3,11 +3,13 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import VideoTeaser from './VideoTeaser';
+
 interface VideoSectionProps {
   title: string;
   type: 'trending' | 'popular' | 'newest';
   showViewAll?: boolean;
 }
+
 const VideoSection = ({
   title,
   type,
@@ -123,19 +125,51 @@ const VideoSection = ({
       }).slice(0, 12);
     }
   };
+  
   const videoData = getVideoData();
   const hotTags = {
     1: ['#TechReview', '#Gadgets'],
     2: ['#Productivity', '#Setup'],
     3: ['#Marketing', '#Business'],
-    4: ['#Lifestyle', '#Morning']
+    4: ['#Lifestyle', '#Morning'],
+    5: ['#Apple', '#Tech'],
+    6: ['#Smartphones', '#Budget'],
+    7: ['#Coding', '#Programming'],
+    8: ['#AI', '#Future'],
+    9: ['#PassiveIncome', '#Money'],
+    10: ['#Web3', '#Blockchain'],
+    11: ['#DigitalMarketing', '#Business'],
+    12: ['#Finance', '#Investing']
   };
-  return <div className="mb-10 container mx-auto px-4">
-      
+  
+  return (
+    <div className="mb-10 mx-auto px-[5%]">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl md:text-2xl font-bold text-white">{title}</h2>
+        {showViewAll && (
+          <Link to="/videos">
+            <Button 
+              variant="outline" 
+              className="border-tube-pink text-tube-pink hover:bg-tube-pink hover:text-white transition-all duration-300 group"
+            >
+              View All
+              <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        )}
+      </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        {videoData.map(video => <VideoTeaser key={video.id} {...video} hotTags={hotTags[video.id as keyof typeof hotTags]} />)}
+        {videoData.map(video => (
+          <VideoTeaser 
+            key={video.id} 
+            {...video} 
+            hotTags={hotTags[video.id as keyof typeof hotTags]} 
+          />
+        ))}
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default VideoSection;

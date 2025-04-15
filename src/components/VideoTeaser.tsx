@@ -2,6 +2,7 @@
 import React from 'react';
 import { Clock, Tag } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import { Link } from 'react-router-dom';
 
 interface VideoTeaserProps {
   id: number;
@@ -25,11 +26,9 @@ const VideoTeaser = ({
   hotTags = []
 }: VideoTeaserProps) => {
   return (
-    <a 
-      href={affiliate}
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="group video-card animate-fade-in flex flex-col h-full bg-tube-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300"
+    <Link 
+      to={`/videos/${id}`}
+      className="group video-card animate-fade-in flex flex-col h-full bg-tube-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-tube-pink/20"
     >
       <div className="video-thumbnail aspect-video mb-3">
         <img src={thumbnail} alt={title} className="w-full h-full object-cover rounded-md" />
@@ -61,7 +60,7 @@ const VideoTeaser = ({
         <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
         <span>{views} views</span>
       </div>
-    </a>
+    </Link>
   );
 };
 
