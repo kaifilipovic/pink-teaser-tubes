@@ -60,9 +60,9 @@ const Videos = () => {
                 <label className="block text-sm font-medium text-gray-400 mb-2">Duration</label>
                 <select className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none">
                   <option value="">Any Duration</option>
-                  <option value="short">Short (< 5 min)</option>
+                  <option value="short">Short (&lt; 5 min)</option>
                   <option value="medium">Medium (5-15 min)</option>
-                  <option value="long">Long (> 15 min)</option>
+                  <option value="long">Long (&gt; 15 min)</option>
                 </select>
               </div>
               <div>
