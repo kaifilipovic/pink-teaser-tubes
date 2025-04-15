@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Mail, Phone, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,7 @@ import Container from '@/components/Container';
 
 const Footer = () => {
   return (
-    <footer className="mt-auto bg-tube-darkgray border-t border-tube-gray">
+    <footer className="bg-tube-darkgray border-t border-tube-gray mt-auto">
       <Container className="py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>

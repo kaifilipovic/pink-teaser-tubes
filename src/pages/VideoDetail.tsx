@@ -13,7 +13,6 @@ import VideoTeaser from '@/components/VideoTeaser';
 const VideoDetail = () => {
   const { id } = useParams();
   
-  // Mock video data (in real app, fetch based on id)
   const video = {
     id: 1,
     title: "10 Tech Gadgets You Need In Your Life",
@@ -41,7 +40,6 @@ const VideoDetail = () => {
     hotTags: ["#TechReviews", "#Gadgets", "#Innovation"]
   };
 
-  // Mock related videos
   const relatedVideos = [
     {
       id: 2,
@@ -89,9 +87,9 @@ const VideoDetail = () => {
     <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
       <main className="flex-1">
-        <Container className="py-8">
-          <div className="max-w-[1280px] mx-auto">
-            <div className="aspect-video w-full mb-6">
+        <Container>
+          <div className="max-h-[calc(100vh-64px-2rem)] overflow-y-auto">
+            <div className="aspect-video w-full mb-4">
               <img 
                 src={video.thumbnail} 
                 alt={video.title}
@@ -99,12 +97,12 @@ const VideoDetail = () => {
               />
             </div>
             
-            <h1 className="text-2xl font-bold text-white mb-4">{video.title}</h1>
+            <h1 className="text-2xl font-bold text-white mb-3">{video.title}</h1>
             
-            <div className="flex items-center gap-4 flex-wrap mb-6">
+            <div className="flex flex-wrap items-center gap-4 mb-4">
               {video.creators.map(creator => (
-                <div key={creator.id} className="flex items-center gap-4">
-                  <Avatar className="h-12 w-12">
+                <div key={creator.id} className="flex items-center gap-3">
+                  <Avatar>
                     <AvatarImage src={creator.avatar} />
                     <AvatarFallback>{creator.name[0]}</AvatarFallback>
                   </Avatar>
@@ -116,24 +114,21 @@ const VideoDetail = () => {
               ))}
             </div>
 
-            <Card className="bg-tube-darkgray border-tube-gray">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-6 mb-4">
+            <Card className="bg-tube-darkgray border-tube-gray mb-8">
+              <CardContent className="p-4">
+                <div className="flex flex-wrap items-center gap-4 mb-3">
                   <div className="flex items-center gap-2 text-gray-400">
-                    <Eye size={16} />
-                    <span>{video.views} views</span>
+                    <Eye size={16} /> <span>{video.views} views</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-400">
-                    <Clock size={16} />
-                    <span>{video.createdAt}</span>
+                    <Clock size={16} /> <span>{video.createdAt}</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-400">
-                    <MessageSquare size={16} />
-                    <span>{video.comments} comments</span>
+                    <MessageSquare size={16} /> <span>{video.comments} comments</span>
                   </div>
                 </div>
                 
-                <p className="text-gray-300 mb-4">{video.description}</p>
+                <p className="text-gray-300 line-clamp-2 mb-3">{video.description}</p>
                 
                 <div className="flex flex-wrap gap-2">
                   {video.hotTags.map((tag, index) => (
@@ -142,24 +137,20 @@ const VideoDetail = () => {
                       variant="secondary" 
                       className="bg-tube-pink/20 text-tube-pink hover:bg-tube-pink hover:text-white"
                     >
-                      <Tag size={12} className="mr-1" />
-                      {tag}
+                      <Tag size={12} className="mr-1" /> {tag}
                     </Badge>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          
-            <div className="mb-8 mt-8">
-              <h3 className="text-xl font-bold text-white mb-6">Related Videos</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {relatedVideos.map((relatedVideo) => (
-                  <VideoTeaser 
-                    key={relatedVideo.id} 
-                    {...relatedVideo}
-                  />
-                ))}
-              </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-white mb-6">Related Videos</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {relatedVideos.map((relatedVideo) => (
+                <VideoTeaser key={relatedVideo.id} {...relatedVideo} />
+              ))}
             </div>
           </div>
         </Container>

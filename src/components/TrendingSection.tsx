@@ -26,7 +26,7 @@ const TrendingSection = () => {
       <Container>
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/2">
-            <div className="flex items-center gap-2 text-tube-pink mb-3">
+            <div className="flex items-center gap-2 text-tube-pink mb-2">
               <TrendingUp size={18} />
               <span className="font-medium">Hot Tags</span>
             </div>
@@ -35,7 +35,7 @@ const TrendingSection = () => {
                 <Link 
                   key={index}
                   to={`/tags/${hashtag.substring(1)}`}
-                  className="bg-tube-gray px-3 py-1 rounded-full text-xs text-gray-300 hover:bg-tube-pink hover:text-white transition-colors whitespace-nowrap"
+                  className="bg-tube-gray px-3 py-1 rounded-full text-xs text-gray-300 hover:bg-tube-pink hover:text-white transition-colors"
                 >
                   {hashtag}
                 </Link>
@@ -44,7 +44,7 @@ const TrendingSection = () => {
           </div>
           
           <div className="w-full md:w-1/2 md:border-l border-tube-gray md:pl-6">
-            <div className="flex items-center gap-2 text-tube-pink mb-3">
+            <div className="flex items-center gap-2 text-tube-pink mb-2">
               <Users size={18} />
               <span className="font-medium">Hot Creators</span>
             </div>
