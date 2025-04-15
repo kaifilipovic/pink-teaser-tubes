@@ -2,52 +2,73 @@
 import React from 'react';
 import Header from '@/components/Header';
 import MobileNavbar from '@/components/MobileNavbar';
-import { Tag as TagIcon } from 'lucide-react';
+import Footer from '@/components/Footer';
+import { Tag as TagIcon, Trending, Eye, Clock } from 'lucide-react';
 
 const Tags = () => {
-  // Sample tags with different sizes based on popularity
-  const tags = [
-    { name: "TechReviews", size: "text-2xl font-bold" },
-    { name: "AffiliateMarketing", size: "text-xl font-semibold" },
-    { name: "EarningOnline", size: "text-2xl font-bold" },
-    { name: "PassiveIncome", size: "text-lg" },
-    { name: "ProductLaunch", size: "text-xl font-semibold" },
-    { name: "GadgetReview", size: "text-lg" },
-    { name: "MakeMoneyOnline", size: "text-2xl font-bold" },
-    { name: "StartupTips", size: "text-lg" },
-    { name: "DigitalMarketing", size: "text-xl font-semibold" },
-    { name: "Entrepreneurship", size: "text-2xl font-bold" },
-    { name: "SocialMediaTips", size: "text-lg" },
-    { name: "InvestmentStrategies", size: "text-xl font-semibold" },
-    { name: "ContentCreation", size: "text-lg" },
-    { name: "Cryptocurrency", size: "text-2xl font-bold" },
-    { name: "RemoteWork", size: "text-lg" },
-    { name: "SideHustles", size: "text-xl font-semibold" },
-    { name: "WebDevelopment", size: "text-lg" },
-    { name: "FutureOfAI", size: "text-2xl font-bold" },
+  const tagCategories = [
+    {
+      title: "Trending Now",
+      icon: <Trending size={20} className="text-tube-pink" />,
+      tags: [
+        { name: "TechReviews", count: 156, size: "text-2xl font-bold" },
+        { name: "AffiliateMarketing", count: 142, size: "text-xl font-semibold" },
+        { name: "EarningOnline", count: 134, size: "text-2xl font-bold" }
+      ]
+    },
+    {
+      title: "Most Popular",
+      icon: <Eye size={20} className="text-tube-pink" />,
+      tags: [
+        { name: "PassiveIncome", count: 98, size: "text-lg" },
+        { name: "ProductLaunch", count: 87, size: "text-xl font-semibold" },
+        { name: "GadgetReview", count: 76, size: "text-lg" }
+      ]
+    },
+    {
+      title: "Recently Added",
+      icon: <Clock size={20} className="text-tube-pink" />,
+      tags: [
+        { name: "Cryptocurrency", count: 45, size: "text-2xl font-bold" },
+        { name: "WebDevelopment", count: 34, size: "text-lg" },
+        { name: "FutureOfAI", count: 23, size: "text-2xl font-bold" }
+      ]
+    }
   ];
 
   return (
     <div className="min-h-screen bg-tube-black">
       <Header />
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-white mb-6">Popular Tags</h1>
-        <div className="bg-tube-darkgray rounded-lg p-6">
-          <div className="flex flex-wrap gap-4">
-            {tags.map((tag, index) => (
-              <a 
-                key={index}
-                href="#"
-                className={`${tag.size} flex items-center gap-1 bg-tube-gray px-4 py-2 rounded-full text-gray-300 hover:bg-tube-pink hover:text-white transition-colors`}
-              >
-                <TagIcon size={16} />
-                {tag.name}
-              </a>
-            ))}
-          </div>
+        <h1 className="text-3xl font-bold text-white mb-6">Explore Tags</h1>
+        
+        <div className="grid gap-8">
+          {tagCategories.map((category, index) => (
+            <div key={index} className="bg-tube-darkgray rounded-lg p-6">
+              <div className="flex items-center gap-2 mb-4">
+                {category.icon}
+                <h2 className="text-xl font-semibold text-white">{category.title}</h2>
+              </div>
+              
+              <div className="flex flex-wrap gap-4">
+                {category.tags.map((tag, idx) => (
+                  <a 
+                    key={idx}
+                    href="#"
+                    className={`${tag.size} group flex items-center gap-2 bg-tube-gray px-4 py-2 rounded-full text-gray-300 hover:bg-tube-pink hover:text-white transition-colors`}
+                  >
+                    <TagIcon size={16} className="group-hover:scale-110 transition-transform" />
+                    <span>{tag.name}</span>
+                    <span className="text-sm font-normal opacity-60">({tag.count})</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
         <MobileNavbar />
       </main>
+      <Footer />
     </div>
   );
 };
