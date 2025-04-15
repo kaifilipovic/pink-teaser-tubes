@@ -29,6 +29,7 @@ const CreatorDetail = () => {
         duration: "3:45",
         views: "45K",
         createdAt: "2 days ago",
+        affiliate: "#", // Added the missing affiliate property
         hotTags: ["#TechReview", "#Gadgets"]
       },
       // Add more videos
