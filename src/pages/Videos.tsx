@@ -19,8 +19,8 @@ const Videos = () => {
   return (
     <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <main className="flex-1">
-        <Container>
+      <Container>
+        <main className="flex-1">
           <div className="my-6">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -107,7 +107,10 @@ const Videos = () => {
           </div>
 
           <CategoryTabs />
-          <VideoSection title="All Videos" type={sortOrder} showViewAll={false} />
+          
+          <div className="my-6">
+            <VideoSection title="All Videos" type={sortOrder} showViewAll={false} />
+          </div>
           
           <Pagination className="mt-8 mb-6">
             <PaginationContent>
@@ -142,8 +145,8 @@ const Videos = () => {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
-        </Container>
-      </main>
+        </main>
+      </Container>
       <MobileNavbar />
       <Footer />
     </div>

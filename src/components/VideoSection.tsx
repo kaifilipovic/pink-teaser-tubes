@@ -143,7 +143,7 @@ const VideoSection = ({
   };
   
   return (
-    <div className="mb-10 mx-auto px-[5%]">
+    <div className="w-full">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl md:text-2xl font-bold text-white">{title}</h2>
         {showViewAll && (
