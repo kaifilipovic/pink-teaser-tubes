@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import MobileNavbar from '@/components/MobileNavbar';
 import Footer from '@/components/Footer';
+import Container from '@/components/Container';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Search, Filter, SortAsc } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -76,151 +76,152 @@ const Actors = () => {
   const allCreators = actors.slice(4);
 
   return (
-    <div className="min-h-screen bg-tube-black">
+    <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <main className="mx-auto px-[5%] py-8">
-        <h1 className="text-3xl font-bold text-white mb-8">Popular Creators</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {popularCreators.map((creator) => (
-            <Link 
-              to={`/creators/${creator.id}`} 
-              key={creator.id}
-              className="group bg-tube-darkgray rounded-lg p-6 hover:bg-tube-gray/50 transition-all duration-300 hover:shadow-lg hover:shadow-tube-pink/20"
+      <main className="flex-1 py-8">
+        <Container>
+          <h1 className="text-2xl font-bold text-white mb-6">Popular Creators</h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {popularCreators.map((creator) => (
+              <Link 
+                to={`/creators/${creator.id}`} 
+                key={creator.id}
+                className="group bg-tube-darkgray rounded-lg p-6 hover:bg-tube-gray/50 transition-all duration-300 hover:shadow-lg hover:shadow-tube-pink/20"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-40 h-40 rounded-full overflow-hidden mb-4 ring-2 ring-tube-pink/20 group-hover:ring-tube-pink transition-all duration-300">
+                    <img 
+                      src={creator.avatar} 
+                      alt={creator.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{creator.name}</h3>
+                  <div className="text-gray-400 mb-4">
+                    <span>{creator.videoCount} videos</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {creator.tags.map((tag, index) => (
+                      <Badge 
+                        key={index} 
+                        variant="secondary" 
+                        className="bg-tube-pink/20 text-tube-pink hover:bg-tube-pink hover:text-white"
+                      >
+                        <Tag size={12} className="mr-1" />
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-white">All Creators</h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2"
             >
-              <div className="flex flex-col items-center">
-                <div className="w-40 h-40 rounded-full overflow-hidden mb-4 ring-2 ring-tube-pink/20 group-hover:ring-tube-pink transition-all duration-300">
-                  <img 
-                    src={creator.avatar} 
-                    alt={creator.name}
-                    className="w-full h-full object-cover"
-                  />
+              <Filter size={16} />
+              Filters
+            </Button>
+          </div>
+          
+          {showFilters && (
+            <div className="bg-tube-darkgray p-4 rounded-lg mb-6 border border-tube-gray">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Search</label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Search creators..."
+                      className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none"
+                    />
+                    <Search className="absolute right-3 top-2.5 text-gray-400" size={16} />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{creator.name}</h3>
-                <div className="text-gray-400 mb-4">
-                  <span>{creator.videoCount} videos</span>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Sort By</label>
+                  <select className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none">
+                    <option value="popular">Most Popular</option>
+                    <option value="videos">Most Videos</option>
+                    <option value="newest">Newest</option>
+                  </select>
                 </div>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {creator.tags.map((tag, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="bg-tube-pink/20 text-tube-pink hover:bg-tube-pink hover:text-white"
-                    >
-                      <Tag size={12} className="mr-1" />
-                      {tag}
-                    </Badge>
-                  ))}
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">Category</label>
+                  <select className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none">
+                    <option value="">All Categories</option>
+                    <option value="tech">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="lifestyle">Lifestyle</option>
+                  </select>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-white">All Creators</h2>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2"
-          >
-            <Filter size={16} />
-            Filters
-          </Button>
-        </div>
-        
-        {showFilters && (
-          <div className="bg-tube-darkgray p-4 rounded-lg mb-6 border border-tube-gray">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Search</label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search creators..."
-                    className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none"
-                  />
-                  <Search className="absolute right-3 top-2.5 text-gray-400" size={16} />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Sort By</label>
-                <select className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none">
-                  <option value="popular">Most Popular</option>
-                  <option value="videos">Most Videos</option>
-                  <option value="newest">Newest</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Category</label>
-                <select className="w-full bg-tube-gray border border-tube-gray focus:border-tube-pink rounded-md py-2 px-4 text-white outline-none">
-                  <option value="">All Categories</option>
-                  <option value="tech">Technology</option>
-                  <option value="finance">Finance</option>
-                  <option value="lifestyle">Lifestyle</option>
-                </select>
               </div>
             </div>
+          )}
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {allCreators.map((creator) => (
+              <Link 
+                to={`/creators/${creator.id}`} 
+                key={creator.id}
+                className="group bg-tube-darkgray rounded-lg p-6 hover:bg-tube-gray/50 transition-all duration-300 hover:shadow-lg hover:shadow-tube-pink/20"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-40 h-40 rounded-full overflow-hidden mb-4 ring-2 ring-tube-pink/20 group-hover:ring-tube-pink transition-all duration-300">
+                    <img 
+                      src={creator.avatar} 
+                      alt={creator.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{creator.name}</h3>
+                  <div className="text-gray-400 mb-4">
+                    <span>{creator.videoCount} videos</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {creator.tags.map((tag, index) => (
+                      <Badge 
+                        key={index} 
+                        variant="secondary" 
+                        className="bg-tube-pink/20 text-tube-pink hover:bg-tube-pink hover:text-white"
+                      >
+                        <Tag size={12} className="mr-1" />
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        )}
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {allCreators.map((creator) => (
-            <Link 
-              to={`/creators/${creator.id}`} 
-              key={creator.id}
-              className="group bg-tube-darkgray rounded-lg p-6 hover:bg-tube-gray/50 transition-all duration-300 hover:shadow-lg hover:shadow-tube-pink/20"
-            >
-              <div className="flex flex-col items-center">
-                <div className="w-40 h-40 rounded-full overflow-hidden mb-4 ring-2 ring-tube-pink/20 group-hover:ring-tube-pink transition-all duration-300">
-                  <img 
-                    src={creator.avatar} 
-                    alt={creator.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{creator.name}</h3>
-                <div className="text-gray-400 mb-4">
-                  <span>{creator.videoCount} videos</span>
-                </div>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {creator.tags.map((tag, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="bg-tube-pink/20 text-tube-pink hover:bg-tube-pink hover:text-white"
-                    >
-                      <Tag size={12} className="mr-1" />
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        
-        <Pagination className="mt-8">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#" isActive>1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-        
+          
+          <Pagination className="mt-8">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#" isActive>1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext href="#" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </Container>
         <MobileNavbar />
       </main>
       <Footer />
