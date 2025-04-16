@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from '@/components/Header';
 import MobileNavbar from '@/components/MobileNavbar';
@@ -39,10 +40,10 @@ const Tags = () => {
   return (
     <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 py-8">
         <Container>
-          <h1 className="text-3xl font-bold text-white my-6">Explore Tags</h1>
-          <div className="grid gap-8">
+          <h1 className="text-2xl font-bold text-white mb-6">Explore Tags</h1>
+          <div className="space-y-6">
             {tagCategories.map((category, index) => (
               <div key={index} className="bg-tube-darkgray rounded-lg p-6">
                 <div className="flex items-center gap-2 mb-4">
@@ -67,8 +68,8 @@ const Tags = () => {
             ))}
           </div>
         </Container>
-        <MobileNavbar />
       </main>
+      <MobileNavbar />
       <Footer />
     </div>
   );

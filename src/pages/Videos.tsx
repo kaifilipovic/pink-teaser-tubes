@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import VideoSection from '@/components/VideoSection';
@@ -19,9 +18,11 @@ const Videos = () => {
   return (
     <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <Container>
-        <main className="flex-1">
-          <div className="my-6">
+      <main className="flex-1 py-8">
+        <Container>
+          <h1 className="text-2xl font-bold text-white mb-6">Videos</h1>
+          
+          <div className="space-y-6">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold text-white">Videos</h1>
@@ -104,49 +105,47 @@ const Videos = () => {
                 </div>
               )}
             </div>
-          </div>
-
-          <CategoryTabs />
-          
-          <div className="my-6">
+            
+            <CategoryTabs />
+            
             <VideoSection title="All Videos" type={sortOrder} showViewAll={false} />
-          </div>
-          
-          <Pagination className="mt-8 mb-6">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" onClick={(e) => {
-                  e.preventDefault();
-                  if (currentPage > 1) setCurrentPage(currentPage - 1);
-                }} />
-              </PaginationItem>
-              {[1, 2, 3].map((page) => (
-                <PaginationItem key={page}>
-                  <PaginationLink 
-                    href="#" 
-                    isActive={currentPage === page}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setCurrentPage(page);
-                    }}
-                  >
-                    {page}
-                  </PaginationLink>
+            
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious href="#" onClick={(e) => {
+                    e.preventDefault();
+                    if (currentPage > 1) setCurrentPage(currentPage - 1);
+                  }} />
                 </PaginationItem>
-              ))}
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentPage(currentPage + 1);
-                }} />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </main>
-      </Container>
+                {[1, 2, 3].map((page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink 
+                      href="#" 
+                      isActive={currentPage === page}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentPage(page);
+                      }}
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext href="#" onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(currentPage + 1);
+                  }} />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        </Container>
+      </main>
       <MobileNavbar />
       <Footer />
     </div>

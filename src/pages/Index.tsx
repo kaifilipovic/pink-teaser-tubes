@@ -1,39 +1,27 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import VideoSection from '@/components/VideoSection';
 import MobileNavbar from '@/components/MobileNavbar';
 import TrendingSection from '@/components/TrendingSection';
 import Footer from '@/components/Footer';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Container from '@/components/Container';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-tube-black">
+    <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <div className="mx-auto py-2 max-w-full">
-        <TrendingSection />
-      </div>
-      <div>
-        <main className="mx-auto py-8 max-w-full">
+      <main className="flex-1 py-8">
+        <Container>
           <div className="space-y-16">
-            <div>
-              <VideoSection title="Trending Videos" type="trending" />
-            </div>
-            
-            <div>
-              <VideoSection title="Most Viewed" type="popular" />
-            </div>
-            
-            <div>
-              <VideoSection title="Latest Uploads" type="newest" />
-            </div>
+            <TrendingSection />
+            <VideoSection title="Trending Videos" type="trending" />
+            <VideoSection title="Most Viewed" type="popular" />
+            <VideoSection title="Latest Uploads" type="newest" />
           </div>
-          <MobileNavbar />
-        </main>
-      </div>
+        </Container>
+        <MobileNavbar />
+      </main>
       <Footer />
     </div>
   );

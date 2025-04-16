@@ -86,10 +86,10 @@ const VideoDetail = () => {
   return (
     <div className="min-h-screen bg-tube-black flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 py-8">
         <Container>
-          <div className="max-h-[calc(100vh-64px-2rem)] overflow-y-auto">
-            <div className="aspect-video w-full mb-4">
+          <div className="space-y-6">
+            <div className="aspect-video w-full">
               <img 
                 src={video.thumbnail} 
                 alt={video.title}
@@ -97,9 +97,9 @@ const VideoDetail = () => {
               />
             </div>
             
-            <h1 className="text-2xl font-bold text-white mb-3">{video.title}</h1>
+            <h1 className="text-2xl font-bold text-white">{video.title}</h1>
             
-            <div className="flex flex-wrap items-center gap-4 mb-4">
+            <div className="flex flex-wrap items-center gap-4">
               {video.creators.map(creator => (
                 <div key={creator.id} className="flex items-center gap-3">
                   <Avatar>
@@ -114,7 +114,7 @@ const VideoDetail = () => {
               ))}
             </div>
 
-            <Card className="bg-tube-darkgray border-tube-gray mb-8">
+            <Card className="bg-tube-darkgray border-tube-gray">
               <CardContent className="p-4">
                 <div className="flex flex-wrap items-center gap-4 mb-3">
                   <div className="flex items-center gap-2 text-gray-400">
@@ -143,14 +143,14 @@ const VideoDetail = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
 
-          <div className="mb-8">
-            <h3 className="text-xl font-bold text-white mb-6">Related Videos</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {relatedVideos.map((relatedVideo) => (
-                <VideoTeaser key={relatedVideo.id} {...relatedVideo} />
-              ))}
+            <div>
+              <h2 className="text-xl font-bold text-white mb-6">Related Videos</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {relatedVideos.map((relatedVideo) => (
+                  <VideoTeaser key={relatedVideo.id} {...relatedVideo} />
+                ))}
+              </div>
             </div>
           </div>
         </Container>
