@@ -1,5 +1,5 @@
 
-import { TrendingUp, Eye, Clock } from 'lucide-react';
+import { TrendingUp, Eye, Clock, LucideIcon } from 'lucide-react';
 
 export interface TagItem {
   name: string;
@@ -9,14 +9,14 @@ export interface TagItem {
 
 export interface TagCategory {
   title: string;
-  icon: JSX.Element;
+  iconType: LucideIcon;
   tags: TagItem[];
 }
 
 export const tagCategories: TagCategory[] = [
   {
     title: "Trending Now",
-    icon: <TrendingUp size={20} className="text-tube-pink" />,
+    iconType: TrendingUp,
     tags: [
       { name: "TechReviews", count: 156, size: "text-2xl font-bold" },
       { name: "AffiliateMarketing", count: 142, size: "text-xl font-semibold" },
@@ -25,7 +25,7 @@ export const tagCategories: TagCategory[] = [
   },
   {
     title: "Most Popular",
-    icon: <Eye size={20} className="text-tube-pink" />,
+    iconType: Eye,
     tags: [
       { name: "PassiveIncome", count: 98, size: "text-lg" },
       { name: "ProductLaunch", count: 87, size: "text-xl font-semibold" },
@@ -34,7 +34,7 @@ export const tagCategories: TagCategory[] = [
   },
   {
     title: "Recently Added",
-    icon: <Clock size={20} className="text-tube-pink" />,
+    iconType: Clock,
     tags: [
       { name: "Cryptocurrency", count: 45, size: "text-2xl font-bold" },
       { name: "WebDevelopment", count: 34, size: "text-lg" },

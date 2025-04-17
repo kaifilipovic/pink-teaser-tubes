@@ -19,7 +19,7 @@ const Tags = () => {
               <TagCategoryCard 
                 key={index}
                 title={category.title}
-                icon={category.icon}
+                iconType={category.iconType}
                 tags={category.tags}
               />
             ))}
