@@ -6,7 +6,7 @@ import CategoryTabs from '@/components/CategoryTabs';
 import MobileNavbar from '@/components/MobileNavbar';
 import Footer from '@/components/Footer';
 import Container from '@/components/Container';
-import { Filter, SortAsc, SortDesc, Search, Clock, Calendar, Flame, TrendingUp, ThumbsUp } from 'lucide-react';
+import { Filter, Search, TrendingUp, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { cn } from '@/lib/utils';
@@ -25,7 +25,7 @@ const Videos = () => {
           <div className="space-y-6">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold text-white">Videos</h1>
+                <h1 className="text-2xl font-bold text-white mb-0">Videos</h1>
                 <Button 
                   variant="outline" 
                   size="sm" 

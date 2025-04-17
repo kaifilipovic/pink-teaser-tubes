@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import MobileNavbar from '@/components/MobileNavbar';
 import Footer from '@/components/Footer';
 import Container from '@/components/Container';
 import { Badge } from "@/components/ui/badge";
-import { Tag, Search, Filter, SortAsc } from 'lucide-react';
+import { Tag, Search, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
@@ -222,8 +223,8 @@ const Actors = () => {
             </PaginationContent>
           </Pagination>
         </Container>
-        <MobileNavbar />
       </main>
+      <MobileNavbar />
       <Footer />
     </div>
   );

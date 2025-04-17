@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -7,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tag, ThumbsUp, MessageSquare, Share2, Clock, Eye } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import VideoTeaser from '@/components/VideoTeaser';
 
 const VideoDetail = () => {

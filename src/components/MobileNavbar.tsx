@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Home, Video, Users, Folder, Tag, Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Home, Video, Users, Folder, Tag } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const MobileNavbar = () => {

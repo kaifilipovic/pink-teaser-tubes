@@ -20,8 +20,8 @@ const Index = () => {
             <VideoSection title="Latest Uploads" type="newest" />
           </div>
         </Container>
-        <MobileNavbar />
       </main>
+      <MobileNavbar />
       <Footer />
     </div>
   );
